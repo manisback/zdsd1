@@ -1,0 +1,293 @@
+<edmx:Edmx
+    xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx"
+    xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata"
+    xmlns:sap="http://www.sap.com/Protocols/SAPData" Version="1.0">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema
+            xmlns="http://schemas.microsoft.com/ado/2008/09/edm" Namespace="SRA018_SO_TRACKING_SRV" xml:lang="cs" sap:schema-version="1">
+            <EntityType Name="Subscription" sap:semantics="subscriptions" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Sub. ID" sap:creatable="false" sap:updatable="false" sap:filterable="false"/>
+                <Property Name="user" Type="Edm.String" MaxLength="12" m:FC_TargetPath="SyndicationAuthorName" m:FC_KeepInContent="false" sap:label="Uživatel" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Časový záznam" sap:creatable="false" sap:filterable="false"/>
+                <Property Name="title" Type="Edm.String" MaxLength="255" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Title" sap:filterable="false"/>
+                <Property Name="deliveryAddress" Type="Edm.String" sap:label="Delivery Address" sap:filterable="false"/>
+                <Property Name="persistNotifications" Type="Edm.Boolean" sap:label="Persist Notification" sap:filterable="false"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection" sap:filterable="false"/>
+                <Property Name="filter" Type="Edm.String" sap:label="Filter" sap:filterable="false"/>
+                <Property Name="select" Type="Edm.String" MaxLength="255" sap:label="Select" sap:filterable="false"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+            </EntityType>
+            <EntityType Name="Notification" sap:semantics="notifications" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ID"/>
+                </Key>
+                <Property Name="ID" Type="Edm.String" Nullable="false" MaxLength="32" sap:label="Notification ID"/>
+                <Property Name="collection" Type="Edm.String" MaxLength="40" sap:label="Collection"/>
+                <Property Name="title" Type="Edm.String" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="false" sap:label="Notif. Text"/>
+                <Property Name="updated" Type="Edm.DateTime" Precision="0" m:FC_TargetPath="SyndicationUpdated" m:FC_KeepInContent="false" sap:label="Časový záznam"/>
+                <Property Name="changeType" Type="Edm.String" MaxLength="30" sap:label="Change Type"/>
+                <Property Name="entriesOfInterest" Type="Edm.Int32" sap:label="No. of Entries"/>
+                <Property Name="recipient" Type="Edm.String" MaxLength="112" sap:label="Recipient" sap:creatable="false" sap:updatable="false"/>
+            </EntityType>
+            <EntityType Name="SalesOrder" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrderNumber"/>
+                </Key>
+                <Property Name="ShippingStatusCode" Type="Edm.String" MaxLength="2" sap:label="Kód statusu odeslání"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="2" sap:label="Distribuční kanál"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:label="Obor"/>
+                <Property Name="OverallStatusCode" Type="Edm.String" MaxLength="2" sap:label="Kód celkového statusu"/>
+                <Property Name="SalesOrderNumber" Type="Edm.String" Nullable="false" MaxLength="10" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Číslo zakázky odběratele"/>
+                <Property Name="ShipToPostalCode" Type="Edm.String" MaxLength="10" sap:label="PSČ"/>
+                <Property Name="ShipToRegion" Type="Edm.String" MaxLength="3" sap:label="Region"/>
+                <Property Name="ShipToCountry" Type="Edm.String" MaxLength="3" sap:label="Stát"/>
+                <Property Name="PO" Type="Edm.String" MaxLength="20" sap:label="Objednávka"/>
+                <Property Name="TotalAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Currency" sap:label="Celková částka"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Měna" sap:semantics="currency-code"/>
+                <Property Name="Status" Type="Edm.String" MaxLength="1" sap:label="Status"/>
+                <Property Name="ShipToPartyName" Type="Edm.String" MaxLength="35" sap:label="Název strany"/>
+                <Property Name="OrderDate" Type="Edm.String" sap:label="Datum zakázky"/>
+                <Property Name="RequestedDate" Type="Edm.String" sap:label="Datum požadavku"/>
+                <Property Name="ShipToContact" Type="Edm.String" sap:label="Kontakt"/>
+                <Property Name="ShipToAddressLine1" Type="Edm.String" MaxLength="35" sap:label="Řádka 1 adresy"/>
+                <Property Name="ShipToAddressLine2" Type="Edm.String" MaxLength="35" sap:label="Řádka 2 adresy"/>
+                <Property Name="ShipToAddressLine3" Type="Edm.String" MaxLength="35" sap:label="Řádka 3 adresy"/>
+                <Property Name="TotalSchedulesCount" Type="Edm.String" sap:label="Celkový počet plánů"/>
+                <Property Name="OpenSchedulesCount" Type="Edm.String" sap:label="Počet otevřených plánů"/>
+                <Property Name="InProcessSchedulesCount" Type="Edm.String" sap:label="Počet plánů ve zpracování"/>
+                <Property Name="ShippedSchedulesCount" Type="Edm.String" sap:label="Počet odeslaných plánů"/>
+                <Property Name="OrderItemsCount" Type="Edm.String" sap:label="Počet položek zakázky"/>
+                <Property Name="PaymentTerms" Type="Edm.String" sap:label="Platební podmínky"/>
+                <Property Name="NetPriceAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Currency" sap:label="Částka ceny netto"/>
+                <Property Name="TaxAmount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Currency" sap:label="Částka daně"/>
+                <Property Name="ShipToCity" Type="Edm.String" MaxLength="35" sap:label="Místo"/>
+                <Property Name="CustomerID" Type="Edm.String" MaxLength="10" sap:label="ID zákazníka"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:label="Prodejní organizace"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" sap:label="Jméno zákazníka"/>
+                <NavigationProperty Name="OrderItems" Relationship="SRA018_SO_TRACKING_SRV.SalesOrderOrderItem" FromRole="FromRole_SalesOrderOrderItem" ToRole="ToRole_SalesOrderOrderItem"/>
+                <NavigationProperty Name="Attachments" Relationship="SRA018_SO_TRACKING_SRV.SalesOrderAttachment" FromRole="FromRole_SalesOrderAttachment" ToRole="ToRole_SalesOrderAttachment"/>
+                <NavigationProperty Name="ScheduledItems" Relationship="SRA018_SO_TRACKING_SRV.SalesOrderScheduledItem" FromRole="FromRole_SalesOrderScheduledItem" ToRole="ToRole_SalesOrderScheduledItem"/>
+            </EntityType>
+            <EntityType Name="OrderItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="ItemNumber"/>
+                    <PropertyRef Name="SalesOrderNumber"/>
+                </Key>
+                <Property Name="ItemClassification" Type="Edm.String" MaxLength="4" sap:label="Klasifikace položky"/>
+                <Property Name="ShippedItemsQty" Type="Edm.Decimal" Precision="13" Scale="3" sap:label="Množství odeslaných položek"/>
+                <Property Name="ItemNumber" Type="Edm.String" Nullable="false" MaxLength="6" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Číslo položky"/>
+                <Property Name="SalesOrderNumber" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="Číslo zakázky odběratele"/>
+                <Property Name="OrderItemSimulate" Type="Edm.Boolean" sap:label="Znak simulace položky"/>
+                <Property Name="EditEnabled" Type="Edm.String" MaxLength="1" sap:label="Upravit znak aktivace"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="40" sap:label="Název"/>
+                <Property Name="Quantity" Type="Edm.Decimal" Precision="15" Scale="3" sap:label="Množství"/>
+                <Property Name="UnitOfMeasure" Type="Edm.String" sap:label="Měrná jednotka"/>
+                <Property Name="StatusCode" Type="Edm.String" MaxLength="1" sap:label="Kód statusu"/>
+                <Property Name="PricePerUnit" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Currency" sap:label="Jednotková cena"/>
+                <Property Name="Amount" Type="Edm.Decimal" Precision="16" Scale="3" sap:unit="Currency" sap:label="Částka"/>
+                <Property Name="Status" Type="Edm.String" sap:label="Status"/>
+                <Property Name="TaxAmountChange" Type="Edm.String" sap:label="Částka změny daně"/>
+                <Property Name="PercentageOfShippedItems" Type="Edm.String" sap:label="Procento odeslaných položek"/>
+                <Property Name="NumberOfLateScheduledItems" Type="Edm.String" sap:label="Počet opožděných plánovaných položek"/>
+                <Property Name="MaterialNumber" Type="Edm.String" MaxLength="18" sap:label="Číslo materiálu"/>
+                <Property Name="FreightAmountChange" Type="Edm.String" sap:label="Částka změny přepravného"/>
+                <Property Name="Description" Type="Edm.String" MaxLength="40" sap:label="Označení"/>
+                <Property Name="CustomerMaterialNumber" Type="Edm.String" MaxLength="22" sap:label="Číslo materiálu zákazníka"/>
+                <Property Name="ItemStatusCode" Type="Edm.String" MaxLength="2" sap:label="Kód statusu položky"/>
+                <Property Name="TotalChange" Type="Edm.String" sap:label="Celková částka změny"/>
+                <Property Name="ShipToAddressLine1" Type="Edm.String" MaxLength="35" sap:label="Adresa příjemce - řádka 1"/>
+                <Property Name="ShipToAddressLine2" Type="Edm.String" MaxLength="35" sap:label="Adresa příjemce - řádka 2"/>
+                <Property Name="ShipToAddressLine3" Type="Edm.String" MaxLength="35" sap:label="Adresa příjemce - řádka 3"/>
+                <Property Name="TotalChangeSign" Type="Edm.String" sap:label="Znaménko celkové částky změny"/>
+                <Property Name="Method" Type="Edm.String" sap:label="Způsob dodání"/>
+                <Property Name="RefernceMaterialNumber" Type="Edm.String" MaxLength="18" sap:label="Referenční číslo materiálu"/>
+                <Property Name="ShipToCity" Type="Edm.String" MaxLength="35" sap:label="Místo"/>
+                <Property Name="FreightChangeSign" Type="Edm.String" sap:label="Znaménko částky změny přepravného"/>
+                <Property Name="ShipToCountry" Type="Edm.String" MaxLength="3" sap:label="Stát"/>
+                <Property Name="ShipToRegion" Type="Edm.String" MaxLength="3" sap:label="Region"/>
+                <Property Name="ShipToPartyName" Type="Edm.String" MaxLength="35" sap:label="Název strany"/>
+                <Property Name="TaxChangeSign" Type="Edm.String" sap:label="Znaménko částky změny daně"/>
+                <Property Name="ShipToPostalCode" Type="Edm.String" MaxLength="10" sap:label="PSČ"/>
+                <Property Name="UnitofMeasureTxt" Type="Edm.String" MaxLength="10" sap:label="Text prodejní jednotky"/>
+                <Property Name="ShipToTelephone" Type="Edm.String" MaxLength="16" sap:label="Telefonní číslo"/>
+                <Property Name="Currency" Type="Edm.String" MaxLength="5" sap:label="Měna" sap:semantics="currency-code"/>
+                <Property Name="ShippingCarrier" Type="Edm.String" sap:label="Přepravce"/>
+                <Property Name="ShippingIncoTerms" Type="Edm.String" sap:label="Přeprava - Incoterms"/>
+                <Property Name="CurrPerUnit" Type="Edm.String" MaxLength="3" sap:label="ISO měny"/>
+                <Property Name="CurrAmount" Type="Edm.String" MaxLength="3" sap:label="Částka v měně"/>
+                <NavigationProperty Name="SalesOrder" Relationship="SRA018_SO_TRACKING_SRV.SalesOrderOrderItem" FromRole="ToRole_SalesOrderOrderItem" ToRole="FromRole_SalesOrderOrderItem"/>
+                <NavigationProperty Name="ScheduledItems" Relationship="SRA018_SO_TRACKING_SRV.OrderItemScheduledItem" FromRole="FromRole_OrderItemScheduledItem" ToRole="ToRole_OrderItemScheduledItem"/>
+            </EntityType>
+            <EntityType Name="ScheduledItem" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="SalesOrderNumber"/>
+                    <PropertyRef Name="ItemNumber"/>
+                    <PropertyRef Name="ScheduleID"/>
+                </Key>
+                <Property Name="Quantity" Type="Edm.String" sap:label="Text množství" sap:filterable="false"/>
+                <Property Name="UnitOfMeasure" Type="Edm.String" sap:label="Měrná jednotka" sap:filterable="false"/>
+                <Property Name="PromisedDate" Type="Edm.String" sap:label="Přislíbené datum" sap:filterable="false"/>
+                <Property Name="RequestedDate" Type="Edm.String" sap:label="Požadované datum" sap:filterable="false"/>
+                <Property Name="Status" Type="Edm.String" sap:label="Status" sap:filterable="false"/>
+                <Property Name="IsLate" Type="Edm.String" sap:label="Znak opoždění" sap:filterable="false"/>
+                <Property Name="CarrierName" Type="Edm.String" sap:label="Název přepravce" sap:filterable="false"/>
+                <Property Name="CarrierTrackingNumber" Type="Edm.String" sap:label="Č. sledování přepravce" sap:filterable="false"/>
+                <Property Name="ShippedDate" Type="Edm.String" sap:label="Datum odeslání" sap:filterable="false"/>
+                <Property Name="StatusCode" Type="Edm.String" sap:label="Kód statusu"/>
+                <Property Name="SalesOrderNumber" Type="Edm.String" Nullable="false" sap:label="Číslo zakázky odběratele"/>
+                <Property Name="ItemNumber" Type="Edm.String" Nullable="false" sap:label="Číslo položky"/>
+                <Property Name="ProductName" Type="Edm.String" sap:label="Název produktu" sap:filterable="false"/>
+                <Property Name="ScheduleID" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="ID plánu"/>
+                <Property Name="OrderItemNumber" Type="Edm.String" sap:label="Číslo položky zakázky" sap:filterable="false"/>
+                <Property Name="UnitofMeasureTxt" Type="Edm.String" MaxLength="10" sap:label="Text prodejní jednotky"/>
+                <NavigationProperty Name="OrderItem" Relationship="SRA018_SO_TRACKING_SRV.OrderItemScheduledItem" FromRole="ToRole_OrderItemScheduledItem" ToRole="FromRole_OrderItemScheduledItem"/>
+            </EntityType>
+            <EntityType Name="Attachment" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="Id" Type="Edm.Int32" Nullable="false" sap:label="ID souboru"/>
+                <Property Name="FileSize" Type="Edm.String" Nullable="false" sap:label="Velikost souboru"/>
+                <Property Name="Type" Type="Edm.String" Nullable="false" sap:label="Typ souboru"/>
+                <Property Name="Description" Type="Edm.String" Nullable="false" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Popis souboru"/>
+                <Property Name="Name" Type="Edm.String" Nullable="false" sap:label="Název souboru"/>
+                <NavigationProperty Name="SalesOrder" Relationship="SRA018_SO_TRACKING_SRV.SalesOrderAttachment" FromRole="ToRole_SalesOrderAttachment" ToRole="FromRole_SalesOrderAttachment"/>
+            </EntityType>
+            <EntityType Name="Contact" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomerID"/>
+                    <PropertyRef Name="Id"/>
+                </Key>
+                <Property Name="SalesOrderNumber" Type="Edm.String" Nullable="false" sap:label="Číslo zakázky odběratele"/>
+                <Property Name="CompanyName" Type="Edm.String" Nullable="false" MaxLength="40" sap:label="Název firmy" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID zákazníka"/>
+                <Property Name="AddressString" Type="Edm.String" Nullable="false" MaxLength="241" sap:label="Řetězec adresy" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Department" Type="Edm.String" MaxLength="40" sap:label="Oddělení" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+                <Property Name="Id" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID kontaktu"/>
+                <Property Name="email" Type="Edm.String" MaxLength="241" sap:label="E-mail"/>
+                <Property Name="Name" Type="Edm.String" MaxLength="35" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Název"/>
+                <Property Name="Title" Type="Edm.String" MaxLength="40" sap:label="Titul"/>
+                <Property Name="phoneNo" Type="Edm.String" MaxLength="30" sap:label="Číslo telefonu"/>
+                <Property Name="MobilePhone" Type="Edm.String" Nullable="false" MaxLength="30" sap:label="Mobilní telefon" sap:creatable="false" sap:updatable="false" sap:sortable="false"/>
+            </EntityType>
+            <EntityType Name="Country" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CountryKey"/>
+                </Key>
+                <Property Name="CountryKey" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Klíč státu"/>
+                <Property Name="CountryName" Type="Edm.String" Nullable="false" MaxLength="50" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Název státu"/>
+                <NavigationProperty Name="States" Relationship="SRA018_SO_TRACKING_SRV.CountryState" FromRole="FromRole_CountryState" ToRole="ToRole_CountryState"/>
+            </EntityType>
+            <EntityType Name="Customer" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CustomerID"/>
+                </Key>
+                <Property Name="CustomerID" Type="Edm.String" Nullable="false" MaxLength="10" sap:label="ID zákazníka"/>
+                <Property Name="CustomerName" Type="Edm.String" MaxLength="35" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Jméno zákazníka"/>
+                <Property Name="SalesOrganization" Type="Edm.String" MaxLength="4" sap:label="Prodejní organizace"/>
+                <Property Name="DistributionChannel" Type="Edm.String" MaxLength="4" sap:label="Distribuční kanál"/>
+                <Property Name="Division" Type="Edm.String" MaxLength="2" sap:label="Oblast"/>
+                <Property Name="SalesOrganizationName" Type="Edm.String" MaxLength="20" sap:label="SalesOrganizationName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DistributionChannelName" Type="Edm.String" MaxLength="20" sap:label="DistributionChannelName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DivisionName" Type="Edm.String" MaxLength="20" sap:label="DviisionName" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="City" Type="Edm.String" MaxLength="40" sap:label="Místo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="PostalCode" Type="Edm.String" MaxLength="10" sap:label="PSČ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="CityZip" Type="Edm.String" MaxLength="51" sap:label="Město/PSČ" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="State" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="CountryKey"/>
+                </Key>
+                <Property Name="CountryKey" Type="Edm.String" Nullable="false" MaxLength="3" m:FC_TargetPath="SyndicationTitle" m:FC_KeepInContent="true" sap:label="Klíč státu"/>
+                <Property Name="Language" Type="Edm.String" Nullable="false" MaxLength="1" sap:label="Klíč jazyka"/>
+                <Property Name="Region" Type="Edm.String" Nullable="false" MaxLength="3" sap:label="Region"/>
+                <Property Name="StateName" Type="Edm.String" Nullable="false" MaxLength="20" sap:label="Označení"/>
+            </EntityType>
+            <Association Name="SalesOrderOrderItem" sap:content-version="1">
+                <End Type="SRA018_SO_TRACKING_SRV.SalesOrder" Multiplicity="1" Role="FromRole_SalesOrderOrderItem"/>
+                <End Type="SRA018_SO_TRACKING_SRV.OrderItem" Multiplicity="*" Role="ToRole_SalesOrderOrderItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SalesOrderOrderItem">
+                        <PropertyRef Name="SalesOrderNumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SalesOrderOrderItem">
+                        <PropertyRef Name="SalesOrderNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="SalesOrderAttachment" sap:content-version="1">
+                <End Type="SRA018_SO_TRACKING_SRV.SalesOrder" Multiplicity="1" Role="FromRole_SalesOrderAttachment"/>
+                <End Type="SRA018_SO_TRACKING_SRV.Attachment" Multiplicity="*" Role="ToRole_SalesOrderAttachment"/>
+            </Association>
+            <Association Name="SalesOrderScheduledItem" sap:content-version="1">
+                <End Type="SRA018_SO_TRACKING_SRV.SalesOrder" Multiplicity="1" Role="FromRole_SalesOrderScheduledItem"/>
+                <End Type="SRA018_SO_TRACKING_SRV.ScheduledItem" Multiplicity="*" Role="ToRole_SalesOrderScheduledItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_SalesOrderScheduledItem">
+                        <PropertyRef Name="SalesOrderNumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_SalesOrderScheduledItem">
+                        <PropertyRef Name="SalesOrderNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <Association Name="CountryState" sap:content-version="1">
+                <End Type="SRA018_SO_TRACKING_SRV.Country" Multiplicity="1" Role="FromRole_CountryState"/>
+                <End Type="SRA018_SO_TRACKING_SRV.State" Multiplicity="*" Role="ToRole_CountryState"/>
+            </Association>
+            <Association Name="OrderItemScheduledItem" sap:content-version="1">
+                <End Type="SRA018_SO_TRACKING_SRV.OrderItem" Multiplicity="1" Role="FromRole_OrderItemScheduledItem"/>
+                <End Type="SRA018_SO_TRACKING_SRV.ScheduledItem" Multiplicity="*" Role="ToRole_OrderItemScheduledItem"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_OrderItemScheduledItem">
+                        <PropertyRef Name="ItemNumber"/>
+                        <PropertyRef Name="SalesOrderNumber"/>
+                    </Principal>
+                    <Dependent Role="ToRole_OrderItemScheduledItem">
+                        <PropertyRef Name="OrderItemNumber"/>
+                        <PropertyRef Name="SalesOrderNumber"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="SRA018_SO_TRACKING_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SubscriptionCollection" EntityType="SRA018_SO_TRACKING_SRV.Subscription" sap:content-version="1"/>
+                <EntitySet Name="NotificationCollection" EntityType="SRA018_SO_TRACKING_SRV.Notification" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="SalesOrders" EntityType="SRA018_SO_TRACKING_SRV.SalesOrder" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="OrderItems" EntityType="SRA018_SO_TRACKING_SRV.OrderItem" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="ScheduledItems" EntityType="SRA018_SO_TRACKING_SRV.ScheduledItem" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="Attachments" EntityType="SRA018_SO_TRACKING_SRV.Attachment" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="Contacts" EntityType="SRA018_SO_TRACKING_SRV.Contact" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="Countries" EntityType="SRA018_SO_TRACKING_SRV.Country" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <EntitySet Name="Customers" EntityType="SRA018_SO_TRACKING_SRV.Customer" sap:searchable="true" sap:content-version="1"/>
+                <EntitySet Name="States" EntityType="SRA018_SO_TRACKING_SRV.State" sap:searchable="true" sap:requires-filter="true" sap:content-version="1"/>
+                <AssociationSet Name="SalesOrderScheduledItem" Association="SRA018_SO_TRACKING_SRV.SalesOrderScheduledItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SalesOrders" Role="FromRole_SalesOrderScheduledItem"/>
+                    <End EntitySet="ScheduledItems" Role="ToRole_SalesOrderScheduledItem"/>
+                </AssociationSet>
+                <AssociationSet Name="CountryState" Association="SRA018_SO_TRACKING_SRV.CountryState" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="Countries" Role="FromRole_CountryState"/>
+                    <End EntitySet="States" Role="ToRole_CountryState"/>
+                </AssociationSet>
+                <AssociationSet Name="OrderItemScheduledItem" Association="SRA018_SO_TRACKING_SRV.OrderItemScheduledItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="OrderItems" Role="FromRole_OrderItemScheduledItem"/>
+                    <End EntitySet="ScheduledItems" Role="ToRole_OrderItemScheduledItem"/>
+                </AssociationSet>
+                <AssociationSet Name="SalesOrderAttachment" Association="SRA018_SO_TRACKING_SRV.SalesOrderAttachment" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SalesOrders" Role="FromRole_SalesOrderAttachment"/>
+                    <End EntitySet="Attachments" Role="ToRole_SalesOrderAttachment"/>
+                </AssociationSet>
+                <AssociationSet Name="SalesOrderOrderItem" Association="SRA018_SO_TRACKING_SRV.SalesOrderOrderItem" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SalesOrders" Role="FromRole_SalesOrderOrderItem"/>
+                    <End EntitySet="OrderItems" Role="ToRole_SalesOrderOrderItem"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link
+                xmlns:atom="http://www.w3.org/2005/Atom" rel="self" href="./sap/SRA018_SO_TRACKING_SRV/$metadata"/>
+                <atom:link
+                    xmlns:atom="http://www.w3.org/2005/Atom" rel="latest-version" href="./sap/SRA018_SO_TRACKING_SRV/$metadata"/>
+                </Schema>
+            </edmx:DataServices>
+        </edmx:Edmx>
