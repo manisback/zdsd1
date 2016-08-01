@@ -14,7 +14,7 @@ sap.ui.define([
 		formatter: formatter,
 
 		/* =========================================================== */
-		/* lifecycle methods                                           */
+		/* lifecycle methods     tralalalala                                       */
 		/* =========================================================== */
 
 		onInit: function() {
