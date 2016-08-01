@@ -42,7 +42,7 @@
 
 				    <form:content>
 
-				        <Label text="Suma" id="__label4"/>
+				        <Label text="Suma" id="__suma"/>
 
 				        <Text text="No text specified" maxLines="0" id="__text01"/></form:content>
 
