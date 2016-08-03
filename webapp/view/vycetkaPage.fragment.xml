@@ -1,60 +1,37 @@
 <core:FragmentDefinition xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" height="100%">
-		<Page id="vycetkaPage">
-			<!--<customHeader>-->
-			<!--	<Bar>-->
-			<!--		<contentLeft>-->
-			<!--			<Button icon="sap-icon://nav-back" press="backToWizardContent">-->
-			<!--			</Button>-->
-			<!--		</contentLeft>-->
-			<!--		<contentMiddle>-->
-			<!--			<Title text="Souhrn"/>-->
-			<!--		</contentMiddle>-->
-			<!--	</Bar>-->
-			<!--</customHeader>-->
-			<!--<content>-->
-			<!--	<form:SimpleForm title="1. Naskenování dodacího listu" minWidth="1024" editable="false" layout="ResponsiveGridLayout">-->
-			<!--		<form:content>-->
-			<!--			<Label text="Dodací list"/>-->
-			<!--			<Text id="ProductTypeChosen" text="30000077"/>-->
-			<!--			<Link press="editStepOne" text="Edit"/>-->
-			<!--		</form:content>-->
-			<!--	</form:SimpleForm>-->
-
-			<!--	<form:SimpleForm title="2. Vratné obaly" minWidth="1024" editable="false" layout="ResponsiveGridLayout">-->
-			<!--		<form:content>-->
-			<!--			<Label text="Keg 30l"/>-->
-			<!--			<Text id="ProductNameChosen" text="0"/>-->
-			<!--			<Label text="Keg 50l"/>-->
-			<!--			<Text id="ProductWeightChosen" text="0"/>-->
-			<!--			<Link press="editStepTwo" text="Edit"/>-->
-			<!--		</form:content>-->
-			<!--	</form:SimpleForm>-->
-
-			<!--	<form:SimpleForm title="3. Dobré pivo zpět" minWidth="1024" editable="false" layout="ResponsiveGridLayout">-->
-			<!--		<form:content>-->
-			<!--			<Label text="Snížená cena" required="false" busy="false"/>-->
-			<!--			<Text text=""/>-->
-			<!--			<Link press="editStepThree" text="Edit"/>-->
-			<!--		</form:content>-->
-			<!--	</form:SimpleForm>-->
-
-			<!--	<form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form3" title="4. Celková cena k zaplacení">-->
-
-			<!--	    <form:content>-->
-
-			<!--	        <Label text="Suma" id="__label4"/>-->
-
-			<!--	        <Text text="No text specified" maxLines="0" id="__text01"/></form:content>-->
-
-			<!--	</form:SimpleForm>-->
-			<!--</content>-->
-			<!--<footer>-->
-			<!--	<Bar>-->
-			<!--		<contentRight>-->
-			<!--			<Button text="Potvrzení" press="handleWizardSubmit" type="Accept"/>-->
-			<!--			<Button text="Zrušit" press="handleWizardCancel" type="Reject"/>-->
-			<!--		</contentRight>-->
-			<!--	</Bar>-->
-			<!--</footer>-->
-		</Page>
+	<Page id="vycetkaPage" title="Informace">
+		<content>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" id="__form0vycet">
+				<form:content>
+					<core:Title text="Informace z portálu MFČR" id="__title0vycet"/>
+					<Label text="FIK" id="__label0vycet"/>
+					<Text text="987a6be5-6af5-44f3-b4fc-987654321000-02" maxLines="0" id="__text0vycet"/>
+					<Label text="Datum přijetí" width="100%" id="__label2vycet"/>
+					<Text text="2017-03-04T18:25:21+01:00" maxLines="0" id="__text1vycet"/>
+					<Label text="BKP" width="100%" id="__label3vycet"/>
+					<Text maxLines="0" id="__text2vycet" text="01234567-89abcdef-01234567-89abcdef-01234567" width="100%"/>
+					<Label text="Částka" width="100%" id="__label2vycetka"/>
+					<Text maxLines="0" id="__text1vycetka"/></form:content>
+			</form:SimpleForm>
+			<HBox width="100%" id="__hbox0vycet" alignItems="Center" justifyContent="Center">
+				<items>
+					<SegmentedButton id="__button1vycet">
+						<buttons>
+							<Button text="Tisk účtenky" id="__button2vycet" width="130px" press="onTisk"/>
+							<Button text="Poslat na mail" id="__button3vycet" width="130px" press="onMail"/>
+							<Button text="Podpis" width="130px" id="__button0vycetka" press="onGetSignature"/></buttons>
+					</SegmentedButton>
+				</items>
+			</HBox>
+			<Image width="400px" height="132px" id="__image0vycet" visible="false"/>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<!--<Button text="EET" press="handleWizardSubmit" type="Accept"/>-->
+					<!--<Button text="Zrušit" press="handleWizardCancel" type="Reject"/>-->
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
 </core:FragmentDefinition>

@@ -13,8 +13,8 @@
     "excludedFiles": [
       "test.html"
     ],
-    "buildRequired": true,
-    "lastBuildDateTime": "Sun, 31 Jul 2016 22:19:42 GMT"
+    "buildRequired": false,
+    "lastBuildDateTime": "Wed, 03 Aug 2016 14:41:56 GMT"
   },
   "dataBinding": {
     "/webapp/view/NotFound.view.xml": {
@@ -87,6 +87,6 @@
   },
   "deploy": {
     "destination": "C68_ADT_vyv",
-    "name": "zdsdmobdriver"
+    "name": "ZDSDMOBDRIVER"
   }
 }

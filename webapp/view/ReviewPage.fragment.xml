@@ -1,86 +1,66 @@
 <core:FragmentDefinition xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" xmlns:core="sap.ui.core" xmlns="sap.m" height="100%">
-		<Page id="wizardReviewPage">
-			<customHeader>
-				<Bar>
-					<contentLeft>
-						<Button icon="sap-icon://nav-back" press="backToWizardContent">
-						</Button>
-					</contentLeft>
-					<contentMiddle>
-						<Title text="Souhrn"/>
-					</contentMiddle>
-				</Bar>
-			</customHeader>
-			<content>
-				<form:SimpleForm title="1. Naskenování dodacího listu" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
-					<form:content>
-						<Label text="Dodací list"/>
-						<Text id="ProductTypeChosen" text="30000077"/>
-						<Link press="editStepOne" text="Edit"/>
-					</form:content>
-				</form:SimpleForm>
+	<Page id="wizardReviewPage">
+		<customHeader>
+			<Bar>
+				<contentLeft>
+					<Button icon="sap-icon://nav-back" press="backToWizardContent"/>
+				</contentLeft>
+				<contentMiddle>
+					<Title text="Souhrn"/>
+				</contentMiddle>
+			</Bar>
+		</customHeader>
+		<content>
+			<form:SimpleForm title="1. Naskenování dodacího listu" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Dodací list"/>
+					<Text id="ProductTypeChosen" text="30000077"/>
+					<Link press="editStepOne" text="Edit"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="2. Vratné obaly" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Keg 30l"/>
+					<Text id="ProductNameChosen" text="0"/>
+					<Label text="Keg 50l"/>
+					<Text id="ProductWeightChosen" text="0"/>
+					<Link press="editStepTwo" text="Edit"/>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm title="3. Dobré pivo zpět" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
+				<form:content>
+					<Label text="Snížená cena" required="false" busy="false"/>
+					<Link press="editStepThree" text="Edit"/>
 
-				<form:SimpleForm title="2. Vratné obaly" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
-					<form:content>
-						<Label text="Keg 30l"/>
-						<Text id="ProductNameChosen" text="0"/>
-						<Label text="Keg 50l"/>
-						<Text id="ProductWeightChosen" text="0"/>
-						<Link press="editStepTwo" text="Edit"/>
-					</form:content>
-				</form:SimpleForm>
-
-				<form:SimpleForm title="3. Dobré pivo zpět" minWidth="1024" editable="false" layout="ResponsiveGridLayout">
-					<form:content>
-						<Label text="Snížená cena" required="false" busy="false"/>
-						<Text text=""/>
-						<Link press="editStepThree" text="Edit"/>
-					</form:content>
-				</form:SimpleForm>
-
-				<form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form3" title="4. Celková suma k zaplacení">
-
-				    <form:content>
-
-				        <Label text="Suma" id="__suma"/>
-
-				        <Text text="No text specified" maxLines="0" id="__text01"/></form:content>
-
-				</form:SimpleForm>
-
-				<form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="__form4" title="5. Výčetka">
-
-				    <form:content>
-
-				        <Label text="5000" id="__label5000"/>
-
-				        <Input width="100%" id="__input5000" type="Number"  valueLiveUpdate="true" liveChange="onVycetka" />
-
-				        <Label text="2000" id="__label2000" />
-
-				        <Input width="100%" id="__input2000" type="Number"  valueLiveUpdate="true" liveChange="onVycetka"/>
-
-				        <Label text="1000" width="100%" id="__label1000" />
-
-				        <Input width="100%" id="__input1000" type="Number" valueLiveUpdate="true" liveChange="onVycetka"/>
-
-				        <Label text="500" width="100%" id="__label8000"/>
-
-				        <Input width="100%" id="__input500" showSuggestion="false" type="Number"  valueLiveUpdate="true" liveChange="onVycetka"/>
-
-				        <Label text="Zbývá doplatit" width="100%" id="__label9000"/>
-
-				        <Text text="No text specified" maxLines="0" id="__text1000"/></form:content>
-
-				</form:SimpleForm>
-			</content>
-			<footer>
-				<Bar>
-					<contentRight>
-						<Button text="EET" press="handleWizardSubmit" type="Accept"/>
-						<Button text="Zrušit" press="handleWizardCancel" type="Reject"/>
-					</contentRight>
-				</Bar>
-			</footer>
-		</Page>
+				</form:content>
+			</form:SimpleForm>
+			<form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="formcelsum" title="4. Celková suma k zaplacení">
+				<form:content>
+					<Label text="Suma" id="__suma"/>
+					<Text text="No text specified" maxLines="0" id="__text01"/></form:content>
+			</form:SimpleForm>
+			<form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="formvycetka" title="5. Výčetka">
+				<form:content>
+					<Label text="5000" id="__label5000"/>
+					<PagingButton count="10" id="__button3rp" positionChange="onPaging"/>
+					<Input width="100%" id="__input5000" type="Number" valueLiveUpdate="true" liveChange="onVycetka"/>
+					<Label text="2000" id="__label2000"/>
+					<Button text="Button" width="100px" id="__button4rp" type="Up"/>
+					<Input width="100%" id="__input2000" type="Number" valueLiveUpdate="true" liveChange="onVycetka"/>
+					<Label text="1000" width="100%" id="__label1000"/>
+					<Input width="100%" id="__input1000" type="Number" valueLiveUpdate="true" liveChange="onVycetka"/>
+					<Label text="500" width="100%" id="__label8000"/>
+					<Label text="Zbývá doplatit" width="100%" id="__label9000"/>
+					<ObjectNumber number="100" unit="Kč" id="__number1"/></form:content>
+			</form:SimpleForm>
+		</content>
+		<footer>
+			<Bar>
+				<contentRight>
+					<Button text="EET" press="handleWizardSubmit" type="Accept"/>
+					<Button text="Zrušit" press="handleWizardCancel" type="Reject"/>
+				</contentRight>
+			</Bar>
+		</footer>
+	</Page>
 </core:FragmentDefinition>

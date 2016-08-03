@@ -1,14 +1,14 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:semantic="sap.m.semantic" controllerName="zdsd.heineken01.controller.Master">
 
 	<semantic:MasterPage id="page" title="DSD Túra" navButtonPress="onNavBack">
-		<semantic:subHeader>
-			<Bar id="headerBar">
-				<contentMiddle>
-					<SearchField id="searchField" showRefreshButton="{= !${device>/support/touch} }" tooltip="{i18n>masterSearchTooltip}" width="100%" search="onSearch">
-					</SearchField>
-				</contentMiddle>
-			</Bar>
-		</semantic:subHeader>
+		<!--<semantic:subHeader>-->
+		<!--	<Bar id="headerBar">-->
+		<!--		<contentMiddle>-->
+					<!--<SearchField visible="false" id="searchField" showRefreshButton="{= !${device>/support/touch} }" tooltip="{i18n>masterSearchTooltip}" width="100%" search="onSearch">-->
+					<!--</SearchField>-->
+		<!--		</contentMiddle>-->
+		<!--	</Bar>-->
+		<!--</semantic:subHeader>-->
 
 		<semantic:content>
 			<PullToRefresh id="pullToRefresh" visible="{device>/support/touch}" refresh="onRefresh"/>
@@ -20,32 +20,53 @@
 					</Toolbar>
 				</infoToolbar>
 				<items>
-					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="Robert Karůnek" icon="sap-icon://supplier">
-					<attributes>
-					    <ObjectAttribute text="Hospůdka U Lesa" active="false" id="__attribute8"/>
-					</attributes>
+					<ObjectListItem type="{= ${device>/system/phone} ? 'Active' : 'Inactive'}" press="onSelectionChange" title="30000077" icon="sap-icon://supplier" intro="7000001">
+					<firstStatus>
+					    <ObjectStatus text="Robert Karůnek" id="__status16"/>
+					</firstStatus>
+					<secondStatus>
+					    <ObjectStatus text="Hospůdka U Lesa" id="__status20"/>
+					</secondStatus>
 					</ObjectListItem>
 				</items>
 			</List>
+			<List noDataText="Drop list items here" id="__list0">
+			<items>
+			    <ObjectListItem type="Active" counter="0" title="30000078" intro="7000001" markFavorite="false" markFlagged="false" showMarkers="false" id="__item4" icon="sap-icon://supplier">
+			        <firstStatus>
+			            <ObjectStatus text="Adéla Wardochová" id="__status12"/>
+			        </firstStatus>
+			        <secondStatus>
+			            <ObjectStatus text="Restaurace Na Náměstí" id="__status13"/>
+			        </secondStatus></ObjectListItem>
+			    <ObjectListItem type="Active" counter="0" title="30000079" intro="7000001" markFavorite="false" markFlagged="false" showMarkers="false" id="__item5" icon="sap-icon://supplier">
+			        <firstStatus>
+			            <ObjectStatus text="Josef Zálusk" id="__status14"/>
+			        </firstStatus>
+			        <secondStatus>
+			            <ObjectStatus text="Hospoda U Rybníku" id="__status15"/>
+			        </secondStatus></ObjectListItem>
+			</items>
+			</List>
 		</semantic:content>
 
-		<semantic:sort>
-			<semantic:SortSelect id="sort" selectedKey="{masterView>/sortBy}" change="onSort">
-				<core:Item id="masterSort1" key="SalesOrderNumber" text="{i18n>masterSort1}"/>
-				<core:Item id="masterSort2" key="NetPriceAmount" text="{i18n>masterSort2}"/>
-			</semantic:SortSelect>
-		</semantic:sort>
+		<!--<semantic:sort>-->
+		<!--	<semantic:SortSelect id="sort" selectedKey="{masterView>/sortBy}" change="onSort">-->
+		<!--		<core:Item id="masterSort1" key="SalesOrderNumber" text="{i18n>masterSort1}"/>-->
+		<!--		<core:Item id="masterSort2" key="NetPriceAmount" text="{i18n>masterSort2}"/>-->
+		<!--	</semantic:SortSelect>-->
+		<!--</semantic:sort>-->
 
-		<semantic:filter>
-			<semantic:FilterAction id="filter" press="onOpenViewSettings"/>
-		</semantic:filter>
+		<!--<semantic:filter>-->
+		<!--	<semantic:FilterAction id="filter" press="onOpenViewSettings"/>-->
+		<!--</semantic:filter>-->
 
-		<semantic:group>
-			<semantic:GroupSelect id="group" selectedKey="{masterView>/groupBy}" change="onGroup">
-				<core:Item id="masterGroupNone" key="None" text="{i18n>masterGroupNone}"/>
-				<core:Item id="masterGroup1" key="NetPriceAmount" text="{i18n>masterGroup1}"/>
-			</semantic:GroupSelect>
-		</semantic:group>
+		<!--<semantic:group>-->
+		<!--	<semantic:GroupSelect id="group" selectedKey="{masterView>/groupBy}" change="onGroup">-->
+		<!--		<core:Item id="masterGroupNone" key="None" text="{i18n>masterGroupNone}"/>-->
+		<!--		<core:Item id="masterGroup1" key="NetPriceAmount" text="{i18n>masterGroup1}"/>-->
+		<!--	</semantic:GroupSelect>-->
+		<!--</semantic:group>-->
 
 	</semantic:MasterPage>
 

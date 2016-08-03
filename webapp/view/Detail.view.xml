@@ -1,61 +1,59 @@
 <mvc:View xmlns="sap.m" xmlns:mvc="sap.ui.core.mvc" xmlns:semantic="sap.m.semantic" xmlns:footerbar="sap.ushell.ui.footerbar" xmlns:u="sap.ui.unified" xmlns:core="sap.ui.core" xmlns:layout="sap.ui.layout" xmlns:form="sap.ui.layout.form" controllerName="zdsd.heineken01.controller.Detail">
 	<NavContainer id="wizardNavContainer">
 		<pages>
-			<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="DSD Túra" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}">
+<semantic:DetailPage id="page" navButtonPress="onNavBack" showNavButton="{device>/system/phone}" title="DSD Přeprava" busy="{detailView>/busy}" busyIndicatorDelay="{detailView>/delay}" enableScrolling="true">
 				<!--<Page-->
 				<!--	id="wizardContentPage"-->
 				<!--	showHeader="false">-->
 				<semantic:content>
-					<ObjectHeader id="objectHeader" title="Robert Karůnek" number="Adresa:">
+					<ObjectHeader introActive="true" iconActive="false" id="__header0" backgroundDesign="Transparent" titleLevel="Auto" responsive="true" condensed="true" intro="" visible="true" title="Číslo túry / číslo přepravy">
 						<attributes>
-							<ObjectAttribute text="Hospůdka U Lesa" active="false" id="__attribute15"/>
+							<ObjectAttribute text="Robert Karůnek" active="false" id="__attribute61"/>
+							<ObjectAttribute text="Hospůdka U Lesa" active="false" id="__attribute62"/>
 						</attributes>
 						<statuses>
-							<ObjectStatus text="U Lesíka 25" id="__status12"/>
-							<ObjectStatus text="Prachatice" id="__status13"/>
-							<ObjectStatus text="65211" id="__status14"/>
+							<ObjectStatus text="YYY" id="__status28" title="Hodnota dodáku"/>
 						</statuses>
 					</ObjectHeader>
-					<Wizard id="CreateProductWizard" complete="wizardCompletedHandler">
+					<Wizard id="CreateProductWizard" complete="wizardCompletedHandler" finishButtonText="Odeslat na portál - EET">
 						<WizardStep id="ProductTypeStep" title="Naskenování Dodacího Listu" validated="true">
-							<MessageStrip class="sapUiSmallMarginBottom" text="Naskenujte dodací list" showIcon="true"/>
+							<MessageStrip class="sapUiSmallMarginBottom" text="Naskenujte dodací list." showIcon="true"/>
 							<HBox alignItems="Center" justifyContent="Center" width="100%">
 								<items>
 									<Button text="Skenovat" width="100%" id="__button11" type="Emphasized" icon="sap-icon://mri-scan" press="handleCamera"/>
 								</items>
 							</HBox>
-							
 							<form:SimpleForm visible="false" editable="true" layout="ResponsiveGridLayout" id="__form3">
 								<form:content>
 									<core:Title text="Dodací list" id="__title1"/>
 									<Label text="Číslo/Datum" id="__label17"/>
-									<Input width="100%" id="__input5" value="30000077 / 18.05.2016"/>
+									<Input width="100%" id="__input5" value="30000077 / 18.05.2016" editable="false"/>
 									<Label text="Číslo zakázky" id="__label18"/>
-									<Input width="100%" id="__input7" value="55000156"/>
+									<Input width="100%" id="__input7" value="55000156" editable="false"/>
 									<Label text="Zákazník" width="100%" id="__label15"/>
-									<Input width="100%" id="__input2" value="300013"/></form:content>
+									<Input width="100%" id="__input2" value="300013" editable="false"/></form:content>
 							</form:SimpleForm>
-								<form:SimpleForm visible="false" editable="true" layout="ResponsiveGridLayout" id="__form4">
-							    <form:content>
-							        <core:Title text="Firma" id="__title2"/>
-							        <Label text="Název" id="__label19"/>
-							        <Text text="Consulting 4U, s.r.o." maxLines="0" id="__jmeno"/>
-							        <Label text="Ulice" id="__label20"/>
-							        <Text text="Wellnerova 134/7" maxLines="0" id="__adresa"/>
-							        <Label text="PSČ" id="__psc1"/>
-							        <Text text="779 00" maxLines="0" id="__adresa2"/>
-							        <Label text="Místo" id="__misto1"/>
-							        <Text text="Olomouc" maxLines="0" id="__adresa1"/>
-							        </form:content>
+							<form:SimpleForm visible="false" editable="true" layout="ResponsiveGridLayout" id="__form4">
+								<form:content>
+									<core:Title text="Firma" id="__title2"/>
+									<Label text="Název" id="__label19"/>
+									<Text text="Consulting 4U, s.r.o." maxLines="0" id="__jmeno"/>
+									<Label text="Ulice" id="__label20"/>
+									<Text text="Wellnerova 134/7" maxLines="0" id="__adresa"/>
+									<Label text="PSČ" id="__psc1"/>
+									<Text text="779 00" maxLines="0" id="__adresa2"/>
+									<Label text="Místo" id="__misto1"/>
+									<Text text="Olomouc" maxLines="0" id="__adresa1"/>
+								</form:content>
 							</form:SimpleForm>
 							<form:SimpleForm visible="false" editable="true" layout="ResponsiveGridLayout" id="__form2">
-							  <form:content>
-							        <core:Title text="Detail Přepravy" id="__title0" level="H6"/>
-							        <Label text="Podmínky" id="__label16"/>
-							        <Text text="Podmínky expedice standard" maxLines="0" id="__text6"/>
-							 </form:content>
+								<form:content>
+									<core:Title text="Detail Přepravy" id="__title0" level="H6"/>
+									<Label text="Podmínky" id="__label16"/>
+									<Text text="Podmínky expedice standard" maxLines="0" id="__text6"/>
+								</form:content>
 							</form:SimpleForm>
-							<Table visible="false" noDataText="Drop column list items here and columns in the area above" id="__table1">
+							<Table visible="false" noDataText="Drop column list items here and columns in the area above" id="__table1" fixedLayout="false">
 								<items>
 									<ColumnListItem counter="0" id="__item20">
 										<cells>
@@ -96,47 +94,43 @@
 								</columns>
 							</Table>
 							<content/>
-
-
 						</WizardStep>
 						<WizardStep id="ProductInfoStep" validated="true" title="Vratné Obaly">
 							<MessageStrip class="sapUiSmallMarginBottom" text="Vyberte, jaké vratné obaly Vám zákazník vrátil." showIcon="true"/>
-							<!--<form:SimpleForm editable="true">-->
-							<!--	<Label text="Name" required="true"/>-->
-							<!--	<Input valueStateText="Enter 6 symbols or more" valueState="{zlocal>/productNameState}" id="ProductName" liveChange="additionalInfoValidation" placeholder="Enter name with length greater than 6" value="{zlocal>/productName}"/>-->
-							<!--	<Label text="Weight" required="true"/>-->
-							<!--	<Input valueStateText="Enter digits" valueState="{zlocal>/productWeightState}" id="ProductWeight" liveChange="additionalInfoValidation" type="Number" placeholder="Enter digits" value="{zlocal>/productWeight}"/>-->
-							<!--	<Label text="Manufacturer"/>-->
-							<!--	<Select selectedKey="{zlocal>/productManufacturer}">-->
-							<!--		<core:Item key="Apple" text="Apple"/>-->
-							<!--		<core:Item key="Microsoft" text="Microsoft"/>-->
-							<!--		<core:Item key="Google" text="Google"/>-->
-							<!--		<core:Item key="Sony" text="Sony"/>-->
-							<!--		<core:Item key="Samsung" text="Samsung"/>-->
-							<!--		<core:Item key="Logitech" text="Logitech"/>-->
-							<!--	</Select>-->
-							<!--	<Label text="Description"/>-->
-							<!--	<TextArea value="{/productDescription}" rows="8"/>-->
-							<!--</form:SimpleForm>-->
-							<Table noDataText="Drop column list items here and columns in the area above" id="__table0">
+							<Table noDataText="Drop column list items here and columns in the area above" id="__table0" fixedLayout="true">
 								<items>
 									<ColumnListItem counter="0" id="__item25">
 										<cells>
 											<Text text="Keg 30l" maxLines="0" id="__text7"/>
-											<Input width="100%" id="sKeg30" type="Number" description="ks" valueLiveUpdate="true" liveChange="onInputCount30"/>
-											<Text text="" maxLines="0" id="__text8"/></cells>
+											<HBox width="150px" id="__hbox0PM">
+												<items>
+													<Button width="4em" id="__button1PM" icon="sap-icon://sys-minus" press="onCountButton" fieldGroupIds="minus"/>
+													<Input width="40px" id="__input0PM" type="Number" value="0" valueLiveUpdate="true" liveChange="onInputCount30" editable="false"/>
+													<Button width="4em" id="__button0PM" icon="sap-icon://sys-add" press="onCountButton" fieldGroupIds="plus"/>
+												</items>
+											</HBox>
+											<!--<Input width="100%" id="sKeg30" type="Number" description="ks" valueLiveUpdate="true" liveChange="onInputCount30"/>-->
+											<ObjectNumber number="0" unit="Kč" id="__number4" fieldGroupIds="number"/>
+										</cells>
 									</ColumnListItem>
 									<ColumnListItem counter="0" id="__item26">
 										<cells>
 											<Text text="Keg 50l" maxLines="0" id="__text10"/>
-											<Input width="100%" id="sKeg50" type="Number" description="ks" valueLiveUpdate="true" liveChange="onInputCount50"/>
-											<Text text="" maxLines="0" id="__text9"/></cells>
+											<HBox width="150px" id="__hbox1PM">
+												<items>
+													<Button width="4em" id="__button3PM" icon="sap-icon://sys-minus" press="onCountButton" fieldGroupIds="minus"/>
+													<Input width="40px" id="__input1PM" type="Number" value="0" editable="false"/>
+													<Button width="4em" id="__button2PM" icon="sap-icon://sys-add" press="onCountButton" fieldGroupIds="plus"/>
+												</items>
+											</HBox>
+											<!--<Input width="100%" id="sKeg50" type="Number" description="ks" valueLiveUpdate="true" liveChange="onInputCount50"/>-->
+											<ObjectNumber number="0" unit="Kč" id="__number3" fieldGroupIds="number"/></cells>
 									</ColumnListItem>
 									<ColumnListItem counter="0" id="__item19">
 										<cells>
-											<Label text="Celková cena" id="__label9" design="Bold"/>
+											<Label text="Vratné obaly celkem" id="__label9" design="Bold"/>
 											<core:InvisibleText text="InvisibleText" id="__text12"/>
-											<Text text="" maxLines="0" id="__text13"/>
+											<ObjectNumber number="0" unit="Kč" id="__number2" fieldGroupIds="number"/>
 										</cells>
 									</ColumnListItem>
 								</items>
@@ -162,7 +156,7 @@
 						</WizardStep>
 						<WizardStep id="OptionalInfoStep" validated="true" activate="optionalStepActivation" title="Dobré pivo zpět">
 							<MessageStrip class="sapUiSmallMarginBottom" text="Vyberte, která piva a kolik kusů z dodacího listu zákazník nepřevezme." showIcon="true"/>
-						<Table visible="true" noDataText="Drop column list items here and columns in the area above" id="__tabdobpiv">
+							<Table visible="true" noDataText="Drop column list items here and columns in the area above" id="__tabdobpiv" fixedLayout="false">
 								<items>
 									<ColumnListItem counter="0" id="__item020">
 										<cells>
@@ -170,8 +164,15 @@
 											<Text text="Výborné pivo 50l" maxLines="0" id="__text017"/>
 											<Text text="10 Ks" maxLines="0" id="__text018"/>
 											<Text text="15000 Kč" maxLines="0" id="__text023"/>
-											<Input width="100%" id="__input1" type="Number" valueLiveUpdate="true" liveChange="onInputCount050"/>
-											<Text text="" maxLines="0" id="__text26"/></cells>
+											<HBox width="150px" id="__hbox2PM">
+												<items>
+													<Button width="4em" id="__button4PM" icon="sap-icon://sys-minus" press="onCountButton" fieldGroupIds="minus"/>
+													<Input width="40px" id="__input2PM" type="Number" value="0" editable="false"/>
+													<Button width="4em" id="__button5PM" icon="sap-icon://sys-add" press="onCountButton" fieldGroupIds="plus"/>
+												</items>
+											</HBox>
+											<!--<Input width="100%" id="__input1" type="Number" valueLiveUpdate="true" liveChange="onInputCount050"/>-->
+											<ObjectNumber number="0" unit="Kč" id="__number0v" fieldGroupIds="number"/></cells>
 									</ColumnListItem>
 									<ColumnListItem counter="0" id="__item021">
 										<cells>
@@ -179,18 +180,25 @@
 											<Text text="Výborné pivo 30l" maxLines="0" id="__text020"/>
 											<Text text="10 Ks" maxLines="0" id="__text021"/>
 											<Text text="10000 Kč" maxLines="0" id="__text024"/>
-											<Input width="100%" id="__input3" type="Number" valueLiveUpdate="true" liveChange="onInputCount030"/>
-											<Text text="" maxLines="0" id="__text27"/></cells>
+											<HBox width="150px" id="__hbox3PM">
+												<items>
+													<Button width="4em" id="__button6PM" icon="sap-icon://sys-minus" press="onCountButton" fieldGroupIds="minus"/>
+													<Input width="40px" id="__input3PM" type="Number" value="0" editable="false"/>
+													<Button width="4em" id="__button7PM" icon="sap-icon://sys-add" press="onCountButton" fieldGroupIds="plus"/>
+												</items>
+											</HBox>
+											<!--<Input width="100%" id="__input3" type="Number" valueLiveUpdate="true" liveChange="onInputCount030"/>-->
+											<ObjectNumber number="0" unit="Kč" id="__number5v" fieldGroupIds="number"/></cells>
 									</ColumnListItem>
 									<ColumnListItem counter="0" id="__item17">
-									    <cells>
-									        <Label text="Celková cena" id="__label5" design="Bold"/>
-									        <core:InvisibleText text="InvisibleText" id="__text11"/>
-									        <Text maxLines="0" id="__text14"/>
-									        <core:InvisibleText text="InvisibleText" id="__text15"/>
-									        <core:InvisibleText text="InvisibleText" id="__text25"/>
-									        <Text maxLines="0" id="__text28" />
-									    </cells>
+										<cells>
+											<Label text="Dobré pivo zpět celkem" id="__label5" design="Bold"/>
+											<core:InvisibleText text="InvisibleText" id="__text11"/>
+											<Text maxLines="0" id="__text14"/>
+											<core:InvisibleText text="InvisibleText" id="__text15"/>
+											<core:InvisibleText text="InvisibleText" id="__text25"/>
+											<ObjectNumber number="0" unit="Kč" id="__number6v" fieldGroupIds="number"/>
+										</cells>
 									</ColumnListItem>
 								</items>
 								<columns>
@@ -215,128 +223,116 @@
 										</header>
 									</Column>
 									<Column id="__column7">
-									<header>
-									    <Label text="Množ.(vracen)" width="100%" id="__label3"/>
-									</header>
+										<header>
+											<Label text="Množ.(vracen)" width="100%" id="__label3"/>
+										</header>
 									</Column>
 									<Column id="__column8">
-									<header>
-									    <Label text="Uprav. Cena" width="100%" id="__label4"/>
-									</header>
+										<header>
+											<Label text="Uprav. Cena" width="100%" id="__label4"/>
+										</header>
 									</Column>
 								</columns>
 							</Table>
 						</WizardStep>
-						<!--<WizardStep id="PricingStep" activate="pricingActivate" complete="pricingComplete" validated="true" title="Výčetka">-->
-						<!--	<MessageStrip class="sapUiSmallMarginBottom" text="You can use the wizard previousStep() and nextStep() methods to navigate from step to step without validation. Also you can use the GoToStep(step) method to scroll programmatically to previously visited steps." showIcon="true"/>-->
-						<!--	<form:SimpleForm editable="true">-->
-						<!--		<Label text="Price"/>-->
-						<!--		<Input value="{/productPrice}"/>-->
-						<!--		<Label text="Discoung group"/>-->
-						<!--		<MultiComboBox>-->
-						<!--			<core:Item key="Children" text="Kids"/>-->
-						<!--			<core:Item key="Children" text="Teens"/>-->
-						<!--			<core:Item key="Children" text="Adults"/>-->
-						<!--			<core:Item key="Children" text="Old people"/>-->
-						<!--		</MultiComboBox>-->
-						<!--		<Label text=" VAT is included"/>-->
-						<!--		<CheckBox selected="{/productVAT}"/>-->
-						<!--	</form:SimpleForm>-->
-						<!--</WizardStep>-->
+						<WizardStep id="PricingStep" activate="pricingActivate" complete="pricingComplete" validated="true" title="Výčetka">
+							<MessageStrip class="sapUiSmallMarginBottom" text="Vyberte obnos peněz zobrazený v 'Saldo' !" showIcon="true"/>
+							<form:SimpleForm editable="false" layout="ResponsiveGridLayout" id="formvycetka" title="" labelSpanM="4">
+								<form:content>
+									<Label text="5000" id="__label5000"/>
+									<HBox width="150px" id="__hbox4PM" displayInline="true">
+										<items>
+											<Button width="4em" id="__button8PM" icon="sap-icon://sys-minus" press="onCountButtonVy" fieldGroupIds="minus"/>
+											<Input width="40px" id="__input4PM" type="Number" value="0"/>
+											<Button width="4em" id="__button9PM" icon="sap-icon://sys-add" press="onCountButtonVy" fieldGroupIds="plus"/>
+										</items>
+									</HBox>
+									<!--<Input width="100%" id="__input5000" type="Number" valueLiveUpdate="true" liveChange="onVycetka"/>-->
+									<Label text="2000" id="__label2000"/>
+									<HBox width="150px" id="__hbox5PM">
+										<items>
+											<Button width="4em" id="__button10PM" icon="sap-icon://sys-minus" press="onCountButtonVy" fieldGroupIds="minus"/>
+											<Input width="40px" id="__input5PM" type="Number" value="0"/>
+											<Button width="4em" id="__button11PM" icon="sap-icon://sys-add" press="onCountButtonVy" fieldGroupIds="plus"/>
+										</items>
+									</HBox>
+									<!--<Input width="100%" id="__input2000" type="Number" valueLiveUpdate="true" liveChange="onVycetka"/>-->
+									<Label text="1000" width="100%" id="__label1000"/>
+									<HBox width="150px" id="__hbox6PM">
+										<items>
+											<Button width="4em" id="__button12PM" icon="sap-icon://sys-minus" press="onCountButtonVy" fieldGroupIds="minus"/>
+											<Input width="40px" id="__input6PM" type="Number" value="0"/>
+											<Button width="4em" id="__button13PM" icon="sap-icon://sys-add" press="onCountButtonVy" fieldGroupIds="plus"/>
+										</items>
+									</HBox>									
+									<!--<Input width="100%" id="__input1000" type="Number" valueLiveUpdate="true" liveChange="onVycetka"/>-->
+									<Label text="500" width="100%" id="__label8000"/>
+									<HBox width="150px" id="__hbox7PM">
+										<items>
+											<Button width="4em" id="__button14PM" icon="sap-icon://sys-minus" press="onCountButtonVy" fieldGroupIds="minus"/>
+											<Input width="40px" id="__input7PM" type="Number" value="0"/>
+											<Button width="4em" id="__button15PM" icon="sap-icon://sys-add" press="onCountButtonVy" fieldGroupIds="plus"/>
+										</items>
+									</HBox>									
+									<!--<Input width="100%" id="__input500" showSuggestion="false" type="Number" valueLiveUpdate="true" liveChange="onVycetka"/>-->
+									<Label text="Vybráno v hotovosti" width="100%" id="__label9000"/>
+									<ObjectNumber number="" unit="Kč" id="__number1"/>
+								</form:content>
+							</form:SimpleForm>
+						</WizardStep>
+						<WizardStep id="eet" activate="pricingActivate" complete="pricingComplete" validated="true" title="EET">
+							<MessageStrip class="sapUiSmallMarginBottom" text="Odeslat zaplacenou sumu na portál finanční správy MFČR." showIcon="true"/>
+							<!--<form:SimpleForm editable="true">-->
+							<!--	<Label text="Price"/>-->
+							<!--	<Input value="{/productPrice}"/>-->
+							<!--	<Label text="Discoung group"/>-->
+							<!--	<MultiComboBox>-->
+							<!--		<core:Item key="Children" text="Kids"/>-->
+							<!--		<core:Item key="Children" text="Teens"/>-->
+							<!--		<core:Item key="Children" text="Adults"/>-->
+							<!--		<core:Item key="Children" text="Old people"/>-->
+							<!--	</MultiComboBox>-->
+							<!--	<Label text=" VAT is included"/>-->
+							<!--	<CheckBox selected="{/productVAT}"/>-->
+							<!--</form:SimpleForm>-->
+						</WizardStep>
 					</Wizard>
+					
+					
 				</semantic:content>
 				<semantic:customFooterContent>
 					<Toolbar>
 						<ToolbarSpacer/>
-						<Button text="Cancel" press="handleWizardCancel"/>
+						<!--<Button text="Cancel" press="handleWizardCancel"/>-->
 					</Toolbar>
 				</semantic:customFooterContent>
-				<!--</Page>-->
-				<!--<semantic:content>-->
-				<!--	<ObjectHeader-->
-				<!--			id="objectHeader"-->
-				<!--			title="{SalesOrderNumber}"-->
-				<!--			number="{-->
-				<!--						path: 'NetPriceAmount',-->
-				<!--						formatter: '.formatter.currencyValue'-->
-				<!--			}"-->
-				<!--			numberUnit="{Currency}">-->
-				<!--	</ObjectHeader>-->
-				<!--	<IconTabBar-->
-				<!--			id="iconTabBar"-->
-				<!--			class="sapUiResponsiveContentPadding">-->
-				<!--		<items>-->
-				<!--			<IconTabFilter-->
-				<!--					id="iconTabBarFilter1"-->
-				<!--					icon="sap-icon://hint"-->
-				<!--					tooltip="{i18n>detailIconTabBarInfo}">-->
-				<!--			</IconTabFilter>-->
-				<!--			<IconTabFilter-->
-				<!--					id="iconTabBarFilter2"-->
-				<!--					icon="sap-icon://attachment"-->
-				<!--					tooltip="{i18n>detailIconTabBarAttachments}">-->
-				<!--			</IconTabFilter>-->
-				<!--		</items>-->
-				<!--	</IconTabBar>-->
-				<!--	<Table-->
-				<!--			id="lineItemsList"-->
-				<!--			width="auto"-->
-				<!--			items="{OrderItems}"-->
-				<!--			updateFinished="onListUpdateFinished"-->
-				<!--			noDataText="{i18n>detailLineItemTableNoDataText}"-->
-				<!--			busyIndicatorDelay="{detailView>/lineItemTableDelay}"-->
-				<!--			class="sapUiResponsiveMargin">-->
-				<!--		<headerToolbar>-->
-				<!--			<Toolbar id="lineItemsToolbar">-->
-				<!--				<Title-->
-				<!--						id="lineItemsHeader"-->
-				<!--						text="{detailView>/lineItemListTitle}"/>-->
-				<!--			</Toolbar>-->
-				<!--		</headerToolbar>-->
-				<!--		<columns>-->
-				<!--			<Column>-->
-				<!--				<Text text="{i18n>detailLineItemTableIDColumn}"/>-->
-				<!--			</Column>-->
-				<!--			<Column-->
-				<!--					minScreenWidth="Tablet"-->
-				<!--					demandPopin="true"-->
-				<!--					hAlign="Right">-->
-				<!--				<Text text="{i18n>detailLineItemTableUnitNumberColumn}"/>-->
-				<!--			</Column>-->
-				<!--		</columns>-->
-				<!--		<items>-->
-				<!--			<ColumnListItem>-->
-				<!--				<cells>-->
-				<!--					<ObjectIdentifier-->
-				<!--							title="{ItemNumber}"-->
-				<!--							text="{SalesOrderNumber}"/>-->
-				<!--					<ObjectNumber-->
-				<!--						number="{-->
-				<!--							path: 'PricePerUnit',-->
-				<!--							formatter: '.formatter.currencyValue'-->
-				<!--						}"-->
-				<!--						unit="{Currency}"/>-->
-				<!--				</cells>-->
-				<!--			</ColumnListItem>-->
-				<!--		</items>-->
-				<!--	</Table>-->
-				<!--</semantic:content>-->
-				<!--<semantic:sendEmailAction>-->
-				<!--	<semantic:SendEmailAction-->
-				<!--			id="shareEmail"-->
-				<!--			press="onShareEmailPress"/>-->
-				<!--</semantic:sendEmailAction>-->
-				<!--<semantic:shareInJamAction>-->
-				<!--	<semantic:ShareInJamAction-->
-				<!--			id="shareInJam"-->
-				<!--			visible="{FLP>/isShareInJamActive}"-->
-				<!--			press="onShareInJamPress"/>-->
-				<!--</semantic:shareInJamAction>-->
-				<!--<semantic:saveAsTileAction>-->
-				<!--	<footerbar:AddBookmarkButton-->
-				<!--			id="shareTile"-->
-				<!--			title="{detailView>/saveAsTileTitle}"/>-->
-				<!--</semantic:saveAsTileAction>-->
+			<semantic:subHeader>
+			    <Toolbar width="100%" id="__toolbar2" design="Solid">
+			    <content>
+			        <HBox width="25%" id="__hbox1" fitContainer="true" alignItems="Center">
+			        <items>
+			        	
+			            <Text text="Číslo túry / 77000001" maxLines="0" id="__text34"/>
+			        </items>
+			        </HBox>
+			        <HBox width="35%" id="__hbox2" fitContainer="true" alignItems="Center">
+			            <items>
+			                <Text text="Číslo přepravy / 30000077" maxLines="0" id="__text28"/>
+			            </items>
+			        </HBox>
+			        <HBox width="45%" id="__hbox3" fitContainer="true" alignItems="Inherit" displayInline="true" justifyContent="End" wrap="Wrap">
+			            <items>
+			            	<Text text="Saldo: " maxLines="0" id="__text8"/>
+			                <ObjectNumber number="25000" unit="Kč" id="__number5" textAlign="End" state="Error" tooltip="Saldo"/>
+			                <Text text="Hodnota:" maxLines="0" id="__text9"/>
+			                <ObjectNumber number="25000" unit="Kč" id="__number0" textAlign="End" tooltip="Hodnota" state="Success"/>
+			                
+			            </items>
+			        </HBox>
+
+			    </content>
+			    </Toolbar>
+			</semantic:subHeader>
 			</semantic:DetailPage>
 		</pages>
 	</NavContainer>
